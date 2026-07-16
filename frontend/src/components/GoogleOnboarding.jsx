@@ -73,7 +73,7 @@ export default function GoogleOnboarding() {
             });
             formDataToSend.append('role', role);
 
-            const res = await fetch("http://localhost:5000/api/auth/google/complete", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google/complete`, {
                 method: "POST",
                 body: formDataToSend,
             });

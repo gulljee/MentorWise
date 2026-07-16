@@ -26,7 +26,7 @@ export default function AIAssistant({ variant = 'floating' }) {
                 const token = localStorage.getItem('token');
                 if (!token) return;
 
-                const response = await fetch('http://localhost:5000/api/ai/history', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ai/history`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -54,7 +54,7 @@ export default function AIAssistant({ variant = 'floating' }) {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/ai/chat', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ai/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

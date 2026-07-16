@@ -40,7 +40,7 @@ export default function MentorDashboard() {
         setLoadingStudents(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/students', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/students`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -77,7 +77,7 @@ export default function MentorDashboard() {
         setIsProfileSaving(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/profile/update', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/update`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(profileData)
@@ -112,7 +112,7 @@ export default function MentorDashboard() {
         setLoadingRequests(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/requests/received', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/requests/received`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -127,7 +127,7 @@ export default function MentorDashboard() {
     const handleAcceptRequest = async (requestId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/connections/requests/${requestId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/requests/${requestId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ status: 'accepted' })
@@ -144,7 +144,7 @@ export default function MentorDashboard() {
     const handleRejectRequest = async (requestId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/connections/requests/${requestId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/requests/${requestId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ status: 'rejected' })
@@ -161,7 +161,7 @@ export default function MentorDashboard() {
         setLoadingSessions(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/sessions', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/sessions`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -176,7 +176,7 @@ export default function MentorDashboard() {
     const fetchNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/notifications', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -189,7 +189,7 @@ export default function MentorDashboard() {
     const markNotificationRead = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await fetch(`http://localhost:5000/api/connections/notifications/${id}/read`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications/${id}/read`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -202,7 +202,7 @@ export default function MentorDashboard() {
     const updateSessionStatus = async (sessionId, status, link = '') => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/sessions/${sessionId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/sessions/${sessionId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ status, meetingLink: link })
@@ -435,7 +435,7 @@ export default function MentorDashboard() {
                             </div>
                             <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-sm ring-2 ring-primary-fixed overflow-hidden">
                                 {user.profileImage ? (
-                                    <img src={`http://localhost:5000/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                    <img src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
                                 ) : (
                                     userInitials || 'MW'
                                 )}
@@ -541,7 +541,7 @@ export default function MentorDashboard() {
                                                 <div key={request._id} className="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-6 transition-all hover:translate-x-2">
                                                     <div className="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xl flex-shrink-0 overflow-hidden">
                                                         {request.mentee.profileImage ? (
-                                                            <img src={`http://localhost:5000/${request.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                            <img src={`${import.meta.env.VITE_API_URL}/${request.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                         ) : (
                                                             <span>{request.mentee.firstName?.[0]}{request.mentee.lastName?.[0]}</span>
                                                         )}
@@ -615,7 +615,7 @@ export default function MentorDashboard() {
                                                     <div key={conn._id} className="flex gap-4 items-center hover:bg-white/10 p-2 rounded-xl transition-all cursor-pointer">
                                                         <div className="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold flex-shrink-0 overflow-hidden">
                                                             {conn.mentee.profileImage ? (
-                                                                <img src={`http://localhost:5000/${conn.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                                <img src={`${import.meta.env.VITE_API_URL}/${conn.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                             ) : (
                                                                 <span>{conn.mentee.firstName?.[0]}{conn.mentee.lastName?.[0]}</span>
                                                             )}
@@ -750,7 +750,7 @@ export default function MentorDashboard() {
                                         <div key={request._id} className="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-6 transition-all hover:translate-x-1 shadow-sm">
                                             <div className="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xl flex-shrink-0 overflow-hidden">
                                                 {request.mentee.profileImage ? (
-                                                    <img src={`http://localhost:5000/${request.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                    <img src={`${import.meta.env.VITE_API_URL}/${request.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                 ) : (
                                                     <span>{request.mentee.firstName?.[0]}{request.mentee.lastName?.[0]}</span>
                                                 )}
@@ -822,7 +822,7 @@ export default function MentorDashboard() {
                                             <div className="flex items-start gap-4 mb-6">
                                                 <div className="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xl flex-shrink-0 overflow-hidden">
                                                     {conn.mentee.profileImage ? (
-                                                        <img src={`http://localhost:5000/${conn.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                        <img src={`${import.meta.env.VITE_API_URL}/${conn.mentee.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                     ) : (
                                                         <span>{conn.mentee.firstName?.[0]}{conn.mentee.lastName?.[0]}</span>
                                                     )}

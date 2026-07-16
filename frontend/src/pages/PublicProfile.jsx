@@ -14,14 +14,14 @@ const PublicProfile = () => {
         const fetchProfileData = async () => {
             try {
                 // Fetch user info
-                const userRes = await fetch(`http://localhost:5000/api/user/profile/${userId}`);
+                const userRes = await fetch(`${import.meta.env.VITE_API_URL}/api/user/profile/${userId}`);
                 const userData = await userRes.json();
                 
                 if (!userRes.ok) throw new Error(userData.message || 'User not found');
                 setUser(userData.user);
 
                 // Fetch transcripts
-                const transRes = await fetch(`http://localhost:5000/api/connections/transcripts/public/${userId}`);
+                const transRes = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/transcripts/public/${userId}`);
                 const transData = await transRes.json();
                 
                 if (transRes.ok) setTranscripts(transData.transcripts || []);

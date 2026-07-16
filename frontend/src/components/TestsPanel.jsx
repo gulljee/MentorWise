@@ -21,7 +21,7 @@ export default function TestsPanel({ connectionId, isMentor, person }) {
 
     const fetchTests = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/tests/${connectionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tests/${connectionId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -66,7 +66,7 @@ export default function TestsPanel({ connectionId, isMentor, person }) {
     const handleCreateTest = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`http://localhost:5000/api/tests/${connectionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tests/${connectionId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ title, description, durationMins, questions })
@@ -84,7 +84,7 @@ export default function TestsPanel({ connectionId, isMentor, person }) {
 
     const handleGrade = async (submissionId, testId) => {
         try {
-            const res = await fetch(`http://localhost:5000/api/tests/grade/${submissionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tests/grade/${submissionId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ score: gradeInput, feedback: feedbackInput })

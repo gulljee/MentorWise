@@ -41,7 +41,7 @@ const FindMentor = () => {
             if (dept)   params.append('department', dept);
 
             const response = await fetch(
-                `http://localhost:5000/api/user/mentors/search?${params.toString()}`,
+                `${import.meta.env.VITE_API_URL}/api/user/mentors/search?${params.toString()}`,
                 { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
             );
             if (!response.ok) throw new Error('Failed to fetch mentors');
@@ -61,7 +61,7 @@ const FindMentor = () => {
     // Status key: "mentorId-subject"
     const fetchSentRequests = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/connections/requests/sent', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/requests/sent`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             if (response.ok) {
@@ -112,7 +112,7 @@ const FindMentor = () => {
     // ── Send request ──────────────────────────────────────────────────────────
     const handleSendRequest = async (mentorId, subject) => {
         try {
-            const response = await fetch('http://localhost:5000/api/connections/request', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/request`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -302,7 +302,7 @@ const FindMentor = () => {
                                     <div className="relative flex-shrink-0">
                                         <div className="w-20 h-20 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-2xl overflow-hidden">
                                             {mentor.profileImage ? (
-                                                <img src={`http://localhost:5000/${mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                <img src={`${import.meta.env.VITE_API_URL}/${mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
                                             ) : (
                                                 getInitials(mentor.firstName, mentor.lastName)
                                             )}

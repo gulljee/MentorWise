@@ -12,7 +12,7 @@ export default function OtpVerification({ email, onSuccess, onCancel }) {
         setIsLoading(true);
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/verify-otp", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-otp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, otpCode }),
@@ -46,7 +46,7 @@ export default function OtpVerification({ email, onSuccess, onCancel }) {
         setError('');
 
         try {
-            const res = await fetch("http://localhost:5000/api/auth/resend-otp", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/resend-otp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),

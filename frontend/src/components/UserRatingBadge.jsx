@@ -6,7 +6,7 @@ export default function UserRatingBadge({ userId, className = '' }) {
     useEffect(() => {
         if (!userId) return;
         const token = localStorage.getItem('token');
-        fetch(`http://localhost:5000/api/ratings/user/${userId}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/ratings/user/${userId}`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(r => r.json())

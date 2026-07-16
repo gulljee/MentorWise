@@ -39,7 +39,7 @@ export default function TestRunner({ test, connectionId, onClose }) {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/tests/${test._id}/submit`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tests/${test._id}/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ connectionId, answers: formattedAnswers })

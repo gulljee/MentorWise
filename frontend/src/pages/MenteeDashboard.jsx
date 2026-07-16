@@ -62,7 +62,7 @@ const MenteeDashboard = () => {
         setLoadingRequests(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/requests/sent', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/requests/sent`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await response.json();
@@ -79,7 +79,7 @@ const MenteeDashboard = () => {
         setLoadingMentors(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/mentors', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/mentors`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await response.json();
@@ -96,7 +96,7 @@ const MenteeDashboard = () => {
         setLoadingSessions(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/sessions', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/sessions`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -113,7 +113,7 @@ const MenteeDashboard = () => {
         setLoadingTranscripts(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/transcripts', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/transcripts`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -129,7 +129,7 @@ const MenteeDashboard = () => {
     const fetchNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/notifications', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -142,7 +142,7 @@ const MenteeDashboard = () => {
     const markNotificationRead = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await fetch(`http://localhost:5000/api/connections/notifications/${id}/read`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications/${id}/read`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -332,7 +332,7 @@ const MenteeDashboard = () => {
                         </div>
                         <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs md:text-sm ring-2 ring-surface-container flex-shrink-0 overflow-hidden">
                             {user.profileImage ? (
-                                <img src={`http://localhost:5000/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                <img src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
                             ) : (
                                 userInitials || 'MW'
                             )}
@@ -425,7 +425,7 @@ const MenteeDashboard = () => {
                                             <div key={request._id} className="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-6 transition-all hover:translate-x-2">
                                                 <div className="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xl flex-shrink-0 overflow-hidden">
                                                     {request.mentor?.profileImage ? (
-                                                        <img src={`http://localhost:5000/${request.mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                        <img src={`${import.meta.env.VITE_API_URL}/${request.mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                     ) : (
                                                         <span>{request.mentor?.firstName?.[0]}{request.mentor?.lastName?.[0]}</span>
                                                     )}
@@ -487,7 +487,7 @@ const MenteeDashboard = () => {
                                                 <div key={conn._id} className="flex gap-4 items-center hover:bg-white/10 p-2 rounded-xl transition-all cursor-pointer">
                                                     <div className="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold flex-shrink-0 overflow-hidden">
                                                         {conn.mentor?.profileImage ? (
-                                                            <img src={`http://localhost:5000/${conn.mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                            <img src={`${import.meta.env.VITE_API_URL}/${conn.mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                         ) : (
                                                             <span>{conn.mentor?.firstName?.[0]}{conn.mentor?.lastName?.[0]}</span>
                                                         )}
@@ -621,7 +621,7 @@ const MenteeDashboard = () => {
                                             <div className="flex gap-4 items-start mb-4">
                                                 <div className="w-16 h-16 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xl flex-shrink-0 overflow-hidden">
                                                     {mentor?.profileImage ? (
-                                                        <img src={`http://localhost:5000/${mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                        <img src={`${import.meta.env.VITE_API_URL}/${mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                     ) : (
                                                         <span>{mentor?.firstName?.[0]}{mentor?.lastName?.[0]}</span>
                                                     )}
@@ -702,7 +702,7 @@ const MenteeDashboard = () => {
                                         <div className="flex gap-4 items-start mb-4">
                                             <div className="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg flex-shrink-0 overflow-hidden">
                                                 {req.mentor?.profileImage ? (
-                                                    <img src={`http://localhost:5000/${req.mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                    <img src={`${import.meta.env.VITE_API_URL}/${req.mentor.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                 ) : (
                                                     <span>{req.mentor?.firstName?.[0]}{req.mentor?.lastName?.[0]}</span>
                                                 )}

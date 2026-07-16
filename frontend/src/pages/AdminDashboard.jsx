@@ -28,7 +28,7 @@ const AdminDashboard = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/users');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`);
       if (response.data.success) {
         setUsers(response.data.data);
       }
@@ -43,7 +43,7 @@ const AdminDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) return;
 
     try {
-      const response = await axios.delete(`http://localhost:5000/api/admin/users/${userId}`);
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}`);
       if (response.data.success) {
         setSelectedUser(null);
         fetchUsers();
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
 
   const handleApproveUser = async (userId, currentStatus) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/admin/users/${userId}/approve`, {
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}/approve`, {
         isApproved: !currentStatus
       });
       if (response.data.success) {
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
 
   const fetchTranscripts = async (menteeId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/admin/transcripts/${menteeId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/transcripts/${menteeId}`);
       if (response.data.success) {
         setTranscripts(response.data.data);
         setShowTranscripts(true);
@@ -305,7 +305,7 @@ const AdminDashboard = () => {
                 <div className="relative">
                   {selectedUser.profileImage ? (
                     <img
-                      src={`http://localhost:5000/${selectedUser.profileImage}`}
+                      src={`${import.meta.env.VITE_API_URL}/${selectedUser.profileImage}`}
                       className="w-32 h-32 rounded-[40px] object-cover ring-8 ring-white shadow-2xl"
                       alt="Profile"
                     />

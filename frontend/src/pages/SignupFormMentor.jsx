@@ -84,7 +84,7 @@ export default function SignupForm() {
             });
             formDataToSend.append('role', userRole);
 
-            const res = await fetch("http://localhost:5000/api/auth/signup", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
                 method: "POST",
                 body: formDataToSend,
             });
@@ -137,7 +137,7 @@ export default function SignupForm() {
                 return;
             }
 
-            const res = await fetch("http://localhost:5000/api/auth/google/verify", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google/verify`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token: credentialResponse.credential }),

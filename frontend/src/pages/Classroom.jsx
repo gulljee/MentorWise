@@ -37,7 +37,7 @@ export default function Classroom() {
     const fetchNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/notifications', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -50,7 +50,7 @@ export default function Classroom() {
     const markNotificationRead = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await fetch(`http://localhost:5000/api/connections/notifications/${id}/read`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications/${id}/read`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -66,8 +66,8 @@ export default function Classroom() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         const url = isMentor
-            ? 'http://localhost:5000/api/connections/students'
-            : 'http://localhost:5000/api/connections/mentors';
+            ? `${import.meta.env.VITE_API_URL}/api/connections/students`
+            : `${import.meta.env.VITE_API_URL}/api/connections/mentors`;
 
         fetch(url, { headers: { Authorization: `Bearer ${token}` } })
             .then(r => r.json())
@@ -132,7 +132,7 @@ export default function Classroom() {
                         <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white overflow-hidden ring-2 ring-primary/10"
                             style={{ background: 'linear-gradient(135deg, #003466 0%, #1a4b84 100%)' }}>
                             {user.profileImage ? (
-                                <img src={`http://localhost:5000/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                <img src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
                             ) : (
                                 <span className="material-symbols-outlined">architecture</span>
                             )}
@@ -235,7 +235,7 @@ export default function Classroom() {
                         </div>
                         <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-sm border-2 border-primary/10 overflow-hidden">
                             {user.profileImage ? (
-                                <img src={`http://localhost:5000/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                <img src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
                             ) : (
                                 userInitials || 'MW'
                             )}
@@ -344,7 +344,7 @@ export default function Classroom() {
                                             {/* Avatar profile image */}
                                             <div className="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xl shadow-md flex-shrink-0 overflow-hidden">
                                                 {person?.profileImage ? (
-                                                    <img src={`http://localhost:5000/${person.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                    <img src={`${import.meta.env.VITE_API_URL}/${person.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                 ) : (
                                                     <span>{initials}</span>
                                                 )}

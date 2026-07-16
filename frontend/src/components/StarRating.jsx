@@ -15,7 +15,7 @@ export default function StarRating({ connectionId, targetName }) {
     // Load existing rating on mount
     useEffect(() => {
         if (!connectionId) return;
-        fetch(`http://localhost:5000/api/ratings/connection/${connectionId}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/ratings/connection/${connectionId}`, {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(r => r.json())
@@ -34,7 +34,7 @@ export default function StarRating({ connectionId, targetName }) {
         setSubmitting(true);
         setError('');
         try {
-            const res = await fetch(`http://localhost:5000/api/ratings/${connectionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/ratings/${connectionId}`, {
                 method:  'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body:    JSON.stringify({ stars: selected, comment })

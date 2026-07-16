@@ -73,7 +73,7 @@ export default function SharedDrive() {
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            let url = 'http://localhost:5000/api/materials';
+            let url = `${import.meta.env.VITE_API_URL}/api/materials`;
             if (subject !== 'All') url += `?subject=${subject}`;
 
             const response = await fetch(url, {
@@ -110,7 +110,7 @@ export default function SharedDrive() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/materials/upload', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/materials/upload`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: formData
@@ -135,7 +135,7 @@ export default function SharedDrive() {
 
     const handleDownload = (fileUrl, fileName) => {
         const link = document.createElement('a');
-        link.href = `http://localhost:5000${fileUrl}`;
+        link.href = `${import.meta.env.VITE_API_URL}${fileUrl}`;
         link.download = fileName;
         document.body.appendChild(link);
         link.click();

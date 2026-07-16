@@ -67,7 +67,7 @@ export default function ClassroomDetail() {
     const fetchNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/connections/notifications', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -80,7 +80,7 @@ export default function ClassroomDetail() {
     const markNotificationRead = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await fetch(`http://localhost:5000/api/connections/notifications/${id}/read`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/api/connections/notifications/${id}/read`, {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -106,7 +106,7 @@ export default function ClassroomDetail() {
         const token = localStorage.getItem('token');
 
         const fetchMessages = () => {
-            fetch(`http://localhost:5000/api/messages/${connectionId}`, {
+            fetch(`${import.meta.env.VITE_API_URL}/api/messages/${connectionId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
                 .then(r => r.json())
@@ -185,7 +185,7 @@ export default function ClassroomDetail() {
                 headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` };
             }
 
-            const response = await fetch(`http://localhost:5000/api/messages/${connectionId}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/messages/${connectionId}`, {
                 method: 'POST', headers, body,
             });
             const data = await response.json();
@@ -219,7 +219,7 @@ export default function ClassroomDetail() {
         setIsBooking(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/sessions', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/sessions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -255,7 +255,7 @@ export default function ClassroomDetail() {
         setIsSubmitting(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/connections/complete', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/connections/complete`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -469,7 +469,7 @@ export default function ClassroomDetail() {
 
                                 <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs lg:text-sm border-2 border-primary/10 overflow-hidden">
                                     {user.profileImage ? (
-                                        <img src={`http://localhost:5000/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                        <img src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
                                     ) : (
                                         userInitials || 'MW'
                                     )}
@@ -538,13 +538,13 @@ export default function ClassroomDetail() {
                                                 }`}>
                                                 {msg.from === 'me' ? (
                                                     user.profileImage ? (
-                                                        <img src={`http://localhost:5000/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
+                                                        <img src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} alt="" className="w-full h-full object-cover" />
                                                     ) : (
                                                         userInitials
                                                     )
                                                 ) : (
                                                     msg.senderPhoto ? (
-                                                        <img src={`http://localhost:5000/${msg.senderPhoto}`} alt="" className="w-full h-full object-cover" />
+                                                        <img src={`${import.meta.env.VITE_API_URL}/${msg.senderPhoto}`} alt="" className="w-full h-full object-cover" />
                                                     ) : (
                                                         initials
                                                     )
@@ -917,7 +917,7 @@ function TasksPanel({ connectionId, isMentor, person }) {
 
     const fetchTasks = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/tasks/${connectionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${connectionId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -946,7 +946,7 @@ function TasksPanel({ connectionId, isMentor, person }) {
         if (newTaskDue) formData.append('dueDate', newTaskDue);
         if (newTaskFile) formData.append('file', newTaskFile);
         try {
-            const res = await fetch(`http://localhost:5000/api/tasks/${connectionId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${connectionId}`, {
                 method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: formData
             });
             const data = await res.json();
@@ -964,7 +964,7 @@ function TasksPanel({ connectionId, isMentor, person }) {
         if (submissionText.trim()) formData.append('text', submissionText.trim());
         else if (!submissionFile) formData.append('text', 'Submitted without file and message');
         try {
-            const res = await fetch(`http://localhost:5000/api/tasks/${taskId}/submit`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/submit`, {
                 method: 'PUT', headers: { Authorization: `Bearer ${token}` }, body: formData
             });
             const data = await res.json();
@@ -977,7 +977,7 @@ function TasksPanel({ connectionId, isMentor, person }) {
 
     const handleGradeTask = async (taskId) => {
         try {
-            const res = await fetch(`http://localhost:5000/api/tasks/${taskId}/grade`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks/${taskId}/grade`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ grade: gradeInput, feedback: feedbackInput })

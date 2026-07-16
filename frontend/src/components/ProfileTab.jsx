@@ -52,7 +52,7 @@ export default function ProfileTab({ initialUser }) {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/profile/update', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/update`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export default function ProfileTab({ initialUser }) {
             const formData = new FormData();
             formData.append('transcript', file);
 
-            const res = await fetch('http://localhost:5000/api/profile/upload-transcript', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/upload-transcript`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -131,7 +131,7 @@ export default function ProfileTab({ initialUser }) {
             const formData = new FormData();
             formData.append('image', file);
 
-            const res = await fetch('http://localhost:5000/api/profile/upload-image', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/profile/upload-image`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -184,7 +184,7 @@ export default function ProfileTab({ initialUser }) {
                                 style={{ boxShadow: '0 8px 24px rgba(0,52,102,0.15)' }}>
                                 {user.profileImage ? (
                                     <img 
-                                        src={`http://localhost:5000/${user.profileImage}`} 
+                                        src={`${import.meta.env.VITE_API_URL}/${user.profileImage}`} 
                                         alt="Profile" 
                                         className="w-full h-full object-cover"
                                     />
@@ -418,7 +418,7 @@ export default function ProfileTab({ initialUser }) {
                                             </p>
                                             {user.transcript && (
                                                 <a 
-                                                    href={`http://localhost:5000/${user.transcript}`} 
+                                                    href={`${import.meta.env.VITE_API_URL}/${user.transcript}`} 
                                                     target="_blank" 
                                                     rel="noopener noreferrer"
                                                     className="inline-block mt-2 text-[10px] font-bold text-primary hover:underline"
