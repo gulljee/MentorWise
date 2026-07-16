@@ -81,8 +81,7 @@ mentor-wise/
 │   ├── routes/         # API endpoints
 │   ├── uploads/        # Local storage for materials/tasks
 │   └── server.js       # Main entry point
-└── frontend/
-    └── vite-project/   # React application
+└── frontend/           # React application
         ├── src/
         │   ├── components/ # Reusable UI elements
         │   ├── pages/      # Full-page views
