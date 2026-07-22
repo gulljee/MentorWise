@@ -271,7 +271,7 @@ export default function LandingPage() {
                             </div>
 
                             <div className="relative group sm:col-span-2 lg:col-span-1">
-                                <div className="aspect-[2/1] sm:aspect-auto lg:aspect-[4/5] bg-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:scale-[1.02] group-hover:shadow-2xl border border-white/10">
+                                <div className="aspect-[2/1] sm:aspect-auto lg:aspect-[4/5] bg-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-white/10">
                                     <div className="relative z-10">
                                         <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10">
                                             <span className="material-symbols-outlined text-primary text-3xl">handshake</span>
