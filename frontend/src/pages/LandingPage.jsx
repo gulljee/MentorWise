@@ -230,58 +230,51 @@ export default function LandingPage() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             <div className="relative group">
-                                <div className="aspect-[4/5] sm:aspect-square lg:aspect-[4/5] bg-primary rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-primary/20">
+                                <div className="h-full bg-primary rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-primary/20">
                                     <div className="relative z-10">
                                         <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10">
                                             <span className="material-symbols-outlined text-primary text-3xl">person_add</span>
                                         </div>
                                         <h3 className="font-headline text-2xl font-extrabold text-white mb-4">Create Profile</h3>
-                                        <p className="text-blue-100 leading-relaxed">
+                                        <p className="text-blue-100 leading-relaxed mb-8">
                                             Join our exclusive community. Share your academic goals and interests to find the perfect match.
                                         </p>
                                     </div>
-                                    <div className="relative z-10 flex items-center">
+                                    <div className="relative z-10 flex items-center mt-auto">
                                         <span className="text-6xl font-black text-white/10">01</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="relative group">
-                                <div className="aspect-[4/5] sm:aspect-square lg:aspect-[4/5] bg-secondary-fixed rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-secondary-fixed/20">
+                                <div className="h-full bg-secondary-fixed rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-secondary-fixed/20">
                                     <div className="relative z-10">
                                         <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10">
                                             <span className="material-symbols-outlined text-secondary text-3xl">search</span>
                                         </div>
                                         <h3 className="font-headline text-2xl font-extrabold text-on-secondary-fixed mb-4">Find a Mentor</h3>
-                                        <p className="text-on-secondary-fixed/80 leading-relaxed">
+                                        <p className="text-on-secondary-fixed/80 leading-relaxed mb-8">
                                             Browse senior expertise across departments. Filter by research interests, industry goals, or challenges.
                                         </p>
-                                        <div className="mt-8 flex -space-x-3 items-center">
-                                            <img alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFKt2sUquIjwXWYdPIHbXGRw7mf8slZh8JYZnlPGRmbwlzpSaTrGK6l9ejC3U0fV-FCBVeIGLv4S7vW9lBj5mCNOV-tkuetPqm4W2dFdl5MchgAt8ndVXWHHeqGQ937LYcecBZIm60iKVvLo9rHaHRdzlhmbH8khTy7QbkCXZDA0n-UxW3JtuIRhjFDKCflpIVtA4okcMKUP6BiHo2T1MEgiBjLxSDpBYuVh_kwnoe4xityLCLgDvIH_UcgARNBctMTabn11mFHXA" />
-                                            <img alt="avatar" className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQGEgoyg5ErvditCNzxWtPBUvBBHqrnGJ_6o1n9tBd3sCb82Bkh97vOJm06mMVu3OGHnuY97DlinoRUaoX5nPVThQGNDc_7mxTAaTIXvDDuFf-KVZVKvPqt8pWSAwpdIXfxciUSmIh0KRfruTm8N2IthTdi_JJX82s5BOnMkgGJsyWXk_YQ2Slx2A1Oemo2JVIVEBgZzIZB7bPI8YRoXK7TM67bBHK80R3M4JGSQXRT_8QK4dITXC2m5NF8j7RRvpN6MqXm378xM4" />
-                                            <div className="w-10 h-10 rounded-full border-2 border-white bg-white flex items-center justify-center text-[10px] font-bold text-primary">+200</div>
-                                        </div>
                                     </div>
-                                    <div className="relative z-10 flex items-center">
+                                    <div className="relative z-10 flex items-center mt-auto">
                                         <span className="text-6xl font-black text-on-secondary-fixed/20">02</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="relative group sm:col-span-2 lg:col-span-1">
-                                <div className="aspect-[2/1] sm:aspect-auto lg:aspect-[4/5] bg-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-white/10">
+                                <div className="h-full bg-primary-container rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-white/10">
                                     <div className="relative z-10">
                                         <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10">
                                             <span className="material-symbols-outlined text-primary text-3xl">handshake</span>
                                         </div>
                                         <h3 className="font-headline text-2xl font-extrabold text-white mb-4">Start Collaborating</h3>
-                                        <p className="text-blue-100/80 leading-relaxed">
+                                        <p className="text-blue-100/80 leading-relaxed mb-8">
                                             Schedule sessions, share resources, and tackle university challenges together with your ally.
                                         </p>
                                     </div>
-                                    <div className="relative z-10 flex items-center">
+                                    <div className="relative z-10 flex items-center mt-auto">
                                         <span className="text-6xl font-black text-white/10">03</span>
                                     </div>
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed/10 rounded-bl-full -mr-16 -mt-16 group-hover:bg-secondary-fixed/20 transition-colors"></div>
