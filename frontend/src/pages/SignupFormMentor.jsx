@@ -1,7 +1,6 @@
 // Signup form with role selection (Mentor/Mentee), Google OAuth, and manual registration
 
 import React, { useState } from "react";
-import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate, useLocation } from 'react-router-dom';
 import OtpVerification from '../components/OtpVerification';
 
@@ -124,48 +123,6 @@ export default function SignupForm() {
             const dest = data.user.role === 'Mentor' ? '/dashboard/mentor' : '/dashboard/mentee';
             navigate(dest);
         }, 1000);
-    };
-
-    const handleGoogleSuccess = async (credentialResponse) => {
-        try {
-            setIsLoading(true);
-            setError("");
-
-            if (!credentialResponse.credential) {
-                setError("Google sign-in failed. Please try again.");
-                setIsLoading(false);
-                return;
-            }
-
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google/verify`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token: credentialResponse.credential }),
-            });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                setError(data.message || "Google signup failed.");
-                setIsLoading(false);
-                return;
-            }
-
-            if (data.userExists) {
-                setIsLoading(false);
-                setShowExistingAccountModal(true);
-            } else {
-                navigate('/google-onboarding', { state: { googleData: data.googleData, userRole: userRole } });
-            }
-
-        } catch (err) {
-            setError("Server error. Try again later.");
-            setIsLoading(false);
-        }
-    };
-
-    const handleGoogleError = () => {
-        setError("Google signup failed. Please try again.");
     };
 
     const termsAndPrivacyContent = (
@@ -370,17 +327,6 @@ export default function SignupForm() {
                                                 </label>
                                             </div>
                                         </div>
-
-                                        {/* Google OAuth */}
-                                        <GoogleLogin
-                                            onSuccess={handleGoogleSuccess}
-                                            onError={handleGoogleError}
-                                            theme="outline"
-                                            size="large"
-                                            text="signup_with"
-                                            shape="rectangular"
-                                            width="100%"
-                                        />
 
                                         <div className="space-y-4">
                                             {/* First + Last Name */}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
 import OtpVerification from '../components/OtpVerification';
 
@@ -29,53 +28,6 @@ export default function LoginPage() {
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
-    };
-
-    const handleGoogleSuccess = async (credentialResponse) => {
-        try {
-            setIsLoading(true);
-            setError("");
-
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google/verify`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token: credentialResponse.credential }),
-            });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                setError(data.message || "Google login failed.");
-                setIsLoading(false);
-                return;
-            }
-
-            if (data.userExists) {
-                if (data.requiresOtp) {
-                    setTempEmail(data.email);
-                    setShowOtp(true);
-                } else {
-                    setSuccess("Login successful!");
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('user', JSON.stringify(data.user));
-
-                    setTimeout(() => {
-                        const dest = data.user.role === 'Mentor' ? '/dashboard/mentor' : '/dashboard/mentee';
-                        navigate(dest);
-                    }, 1000);
-                }
-            } else {
-                navigate('/google-onboarding', { state: { googleData: data.googleData } });
-            }
-
-        } catch (err) {
-            setError("Server error. Try again later.");
-            setIsLoading(false);
-        }
-    };
-
-    const handleGoogleError = () => {
-        setError("Google login failed. Please try again.");
     };
 
     const handleSubmit = async (e) => {
@@ -229,24 +181,6 @@ export default function LoginPage() {
                                             Sign in to continue your journey of growth and professional excellence within our scholarly community.
                                         </p>
                                     </header>
-
-                                    <div className="mb-6">
-                                        <GoogleLogin
-                                            onSuccess={handleGoogleSuccess}
-                                            onError={handleGoogleError}
-                                            theme="outline"
-                                            size="large"
-                                            text="continue_with"
-                                            shape="rectangular"
-                                            width="100%"
-                                        />
-                                    </div>
-
-                                    <div className="flex items-center gap-4 mb-6">
-                                        <div className="flex-1 h-px bg-outline-variant/30"></div>
-                                        <span className="text-on-surface-variant/50 text-xs font-bold uppercase tracking-widest">or</span>
-                                        <div className="flex-1 h-px bg-outline-variant/30"></div>
-                                    </div>
 
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <div>
