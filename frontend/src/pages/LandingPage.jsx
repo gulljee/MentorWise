@@ -89,7 +89,7 @@ export default function LandingPage() {
         <div className="bg-surface text-on-surface font-body antialiased">
 
             <nav className="fixed top-0 w-full z-50 bg-transparent backdrop-blur-xl">
-                <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+                <div className="flex justify-between items-center px-4 sm:px-8 py-4 max-w-7xl mx-auto">
                     <div 
                         className="text-2xl font-extrabold tracking-tighter text-blue-900 cursor-pointer"
                         onClick={() => navigate("/")}
@@ -203,12 +203,12 @@ export default function LandingPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
                             </div>
 
-                            <div className="absolute -bottom-6 -left-6 md:-left-12 z-20 bg-surface-container-lowest p-4 md:p-6 rounded-xl shadow-2xl max-w-[180px] md:max-w-[240px] border border-outline-variant/10">
+                            <div className="absolute -bottom-6 -left-6 md:-left-12 z-20 bg-surface-container-lowest p-4 pb-6 md:p-6 md:pb-6 rounded-xl shadow-2xl max-w-[180px] md:max-w-[240px] border border-outline-variant/10">
                                 <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
                                     <span className="material-symbols-outlined text-secondary text-2xl md:text-3xl">star</span>
                                     <span className="text-primary font-bold text-lg md:text-xl">4.9/5</span>
                                 </div>
-                                <p className="text-[10px] md:text-xs text-on-surface-variant font-medium uppercase tracking-wider">
+                                <p className="text-[10px] md:text-xs text-on-surface-variant font-medium uppercase tracking-wider leading-relaxed">
                                     Average Student Satisfaction Rate
                                 </p>
                             </div>
