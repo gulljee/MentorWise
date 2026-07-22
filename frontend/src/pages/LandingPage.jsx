@@ -230,30 +230,30 @@ export default function LandingPage() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             <div className="relative group">
-                                <div className="aspect-[4/5] sm:aspect-square lg:aspect-[4/5] bg-surface-container-low rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:bg-primary group-hover:shadow-2xl hover:-translate-y-2">
+                                <div className="aspect-[4/5] sm:aspect-square lg:aspect-[4/5] bg-primary rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-primary/20">
                                     <div className="relative z-10">
-                                        <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10 group-hover:bg-primary-container">
-                                            <span className="material-symbols-outlined text-primary text-3xl group-hover:text-white">person_add</span>
+                                        <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10">
+                                            <span className="material-symbols-outlined text-primary text-3xl">person_add</span>
                                         </div>
-                                        <h3 className="font-headline text-2xl font-extrabold text-primary mb-4 group-hover:text-white">Create Profile</h3>
-                                        <p className="text-on-surface-variant group-hover:text-blue-100 leading-relaxed">
+                                        <h3 className="font-headline text-2xl font-extrabold text-white mb-4">Create Profile</h3>
+                                        <p className="text-blue-100 leading-relaxed">
                                             Join our exclusive community. Share your academic goals and interests to find the perfect match.
                                         </p>
                                     </div>
                                     <div className="relative z-10 flex items-center">
-                                        <span className="text-6xl font-black text-outline-variant/20 group-hover:text-white/10">01</span>
+                                        <span className="text-6xl font-black text-white/10">01</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="relative group">
-                                <div className="aspect-[4/5] sm:aspect-square lg:aspect-[4/5] bg-secondary-fixed/10 rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:bg-secondary-fixed group-hover:shadow-2xl hover:-translate-y-2 border border-secondary-fixed/20">
+                                <div className="aspect-[4/5] sm:aspect-square lg:aspect-[4/5] bg-secondary-fixed rounded-3xl p-8 md:p-10 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-lg border border-secondary-fixed/20">
                                     <div className="relative z-10">
-                                        <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10 group-hover:bg-secondary-container">
+                                        <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-10">
                                             <span className="material-symbols-outlined text-secondary text-3xl">search</span>
                                         </div>
-                                        <h3 className="font-headline text-2xl font-extrabold text-primary mb-4">Find a Mentor</h3>
-                                        <p className="text-on-surface-variant leading-relaxed group-hover:text-on-secondary-fixed">
+                                        <h3 className="font-headline text-2xl font-extrabold text-on-secondary-fixed mb-4">Find a Mentor</h3>
+                                        <p className="text-on-secondary-fixed/80 leading-relaxed">
                                             Browse senior expertise across departments. Filter by research interests, industry goals, or challenges.
                                         </p>
                                         <div className="mt-8 flex -space-x-3 items-center">
@@ -265,7 +265,7 @@ export default function LandingPage() {
                                         </div>
                                     </div>
                                     <div className="relative z-10 flex items-center">
-                                        <span className="text-6xl font-black text-secondary-fixed-dim/40 group-hover:text-on-secondary-fixed/10">02</span>
+                                        <span className="text-6xl font-black text-on-secondary-fixed/20">02</span>
                                     </div>
                                 </div>
                             </div>
