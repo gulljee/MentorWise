@@ -165,7 +165,7 @@ export default function LoginPage() {
 
                     <div className="w-full lg:w-7/12 flex flex-col items-center justify-center p-6 sm:p-12 md:p-16 lg:p-24 bg-surface-container-lowest">
 
-                        <div className="w-full max-w-md">
+                        <div className="w-full max-w-md mb-12 lg:mb-32">
                             {showOtp ? (
                                 <OtpVerification
                                     email={tempEmail}
